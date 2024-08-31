@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <style>
+        .main {
+            width: 1000px;
+            background-color: aqua;
+            color: rgb(40, 15, 151);
+        }
+    </style>
+</head>
+<body>
+    <div class="main">Welcome to WS Cube Tech | Marwari Line</div>
+    <p>{{ bdata }}</p>  
+    <!-- bdata is a key value inside a data dict, {{ bdata }} is used to display variables -->
+    <!-- This is how we can pass dynamic data -->
+    <!-- Fetching a list on a website -->
+    {% for n in clist %}
+    <div> {{ forloop.counter }} {{ n }}</div>
+    {% endfor %}
+    <br> <hr>
+    <!-- Rewrite the same loop -->
+    {% for n in clist %}
+    <div>{{ forloop.first }}. {{ n }}</div>
+    <!-- first mean 1st value is True and all are false -->
+    {% endfor %}
+
+    <!-- Fetching Dictionary on Website -->
+    <br>
+    <table border="1" cellpadding="10px">
+        <tr>
+            <th>Home</th>
+            <th>Age</th>
+        </tr>
+
+        <!-- For Displaying Dictionary -->
+        {% for d in student_detail %}
+        <tr>
+            <td>{{ d.name }}</td> 
+            <td>{{ d.age }}</td>
+        </tr>
+        {% endfor %}
+        <!-- This print the exact list on the screen -->
+        <!-- {{ numbers }} -->
+        <!-- For Using For loop only one curly bracket is ok -->
+        <!-- Now IF ELSE CONDITION IN THIS -->
+    </table>
+<!-- This 52 line check that numbers list contain more than 0 mean atleast single element then print that loop or else execute -->
+    {% if numbers|length > 0 %}
+
+        {% for n in numbers %}
+            {% if n > 30 %}
+                <div>{{ n }}</div>
+            {% endif %}
+        {% endfor %}
+
+    {% else %}
+        No Data Found
+
+    {% endif %}
+
+
+</body>
+</html>
