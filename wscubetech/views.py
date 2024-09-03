@@ -27,15 +27,21 @@ def courseDetail(request, courseid):
 ## Testing of all Html Pages:
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
 
+@csrf_exempt
 def HomePage(request):
     return render(request, 'index.html')
 
+@csrf_exempt
 def aboutUs(request):
     return render(request, 'about.html')
 
+@csrf_exempt
 def services(request):
     return render(request, 'services.html')
 
+@csrf_exempt
 def contact(request):
     return render(request, 'contact.html')
+
