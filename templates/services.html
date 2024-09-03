@@ -3,22 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Services</title>
+    <title>Services Page</title>
     <link rel="stylesheet" href="services.css">
 </head>
 <body>
     <div class="navbar">
         <a href="{% url 'home' %}">Home</a>
-        <a href="{% url 'about' %}">About Us</a>
         <a href="{% url 'services' %}">Services</a>
         <a href="{% url 'contact' %}">Contact Us</a>
     </div>
 
     <div class="container">
         <h1>Our Services</h1>
-        <p>Explore the range of services we offer. We provide solutions tailored to your needs.</p>
-        <img src="services.jpg" alt="Services Image" class="image">
-        <p>From web development to data analysis, our services are designed to help you achieve your goals. Contact us today to learn more about how we can assist you.</p>
+        <p>We offer a wide range of services to meet your needs. Whether you are looking for web development, Python scripting, or automation solutions, we've got you covered.</p>
+        
+        <div class="service">
+            <h2>Web Development</h2>
+            <p>We build modern, responsive websites that cater to your business needs. Our web development service ensures that your online presence is both attractive and effective.</p>
+        </div>
+
+        <div class="service">
+            <h2>Python Scripting</h2>
+            <p>Our Python scripting services provide you with powerful automation solutions, helping you streamline your workflows and increase productivity.</p>
+        </div>
+
+        <div class="service">
+            <h2>Automation Solutions</h2>
+            <p>We specialize in creating customized automation solutions that help you save time and reduce manual effort in your daily tasks.</p>
+        </div>
     </div>
 </body>
 </html>

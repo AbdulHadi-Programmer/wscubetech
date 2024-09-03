@@ -18,8 +18,8 @@ def HomePage(request):
 def aboutUs(request):
     return HttpResponse("<b>Welcome to My Website </b>")
 
-def course(request):
-    return HttpResponse("Welcome to My Website Course Page")
+# def course(request):
+#     return HttpResponse("Welcome to My Website Course Page")
 
 def courseDetail(request, courseid):
     return HttpResponse(courseid)

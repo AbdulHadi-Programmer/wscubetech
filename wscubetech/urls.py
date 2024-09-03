@@ -25,7 +25,7 @@ from wscubetech import views
 
 urlpatterns = [
     # We can change or create urls in this files
-    path('', views.HomePage),
+    path('', views.HomePage, name='home'),
     path('admin/', admin.site.urls),
     path('about-us/', views.aboutUs),
     path('course/', views.course),
@@ -36,8 +36,8 @@ urlpatterns = [
     
     # YE HAI ABHI WALA CODE AUE HTML ME FOR LOOP LEARNING KO MAT CHERNA USNE MENE DJANGO K TAGS LIKHAY HOAY HAI .
     path('course/<courseid>', views.courseDetail),
-    path('/about/', views.aboutUs, name='about'),
-    path('/services/', views.course, name='services'),
-    path('/contact/', views.contact, name='contact'),
+    path('about/', views.aboutUs, name='about'),
+    path('services/', views.course, name='services'),
+    path('contact/', views.contact, name='contact'),
 
 ]
