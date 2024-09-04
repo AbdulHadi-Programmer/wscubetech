@@ -1,6 +1,11 @@
+## Testing of all Html Pages:
+from django.shortcuts import render
+from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse # Show text on browser
 from django.shortcuts import render
 
+@csrf_exempt
 def HomePage(request):
     # data = {
     #     'title' : 'Home Page',
@@ -14,17 +19,6 @@ def HomePage(request):
     #     ]
     # }
     return render(request, "index.html")
-
-def aboutUs(request):
-    return HttpResponse("<b>Welcome to My Website </b>")
-
-# def course(request):
-#     return HttpResponse("Welcome to My Website Course Page")
-
-def courseDetail(request, courseid):
-    return HttpResponse(courseid)
-
-## Testing of all Html Pages:
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -44,4 +38,3 @@ def services(request):
 @csrf_exempt
 def contact(request):
     return render(request, 'contact.html')
-
