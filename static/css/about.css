@@ -53,8 +53,10 @@ p {
 }
 
 .image {
-    max-width: 100%;
-    height: auto;
+    max-width: 500px;  /* Maximum width */
+    max-height: 500px; /* Maximum height */
+    width: 100%;       /* Scale to fit container width */
+    height: auto;      /* Maintain aspect ratio */
     border-radius: 8px;
     margin: 20px 0;
 }
