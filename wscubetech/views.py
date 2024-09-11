@@ -2,8 +2,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-from django.http import HttpResponse # Show text on browser
-from django.shortcuts import render
+
 
 @csrf_exempt
 def HomePage(request):
@@ -19,9 +18,6 @@ def HomePage(request):
     #     ]
     # }
     return render(request, "index.html")
-from django.shortcuts import render
-from django.http import HttpResponse
-from django.views.decorators.csrf import csrf_exempt
 
 @csrf_exempt
 def HomePage(request):
