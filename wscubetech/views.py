@@ -34,3 +34,4 @@ def services(request):
 @csrf_exempt
 def contact(request):
     return render(request, 'contact.html')
+
