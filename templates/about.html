@@ -19,7 +19,14 @@
     <section class="about-section">
         <h1>About Me</h1>
         <p>I'm Abdul Hadi Salman, a passionate college student with a strong interest in Python and development. I have experience working on various projects, including problem-solving and creating meaningful applications. Below are some of my key project ideas:</p>
-
+        <div>
+            {% if output %}
+                The Total: {{ output }}
+            {% else %}
+                The Total: No data available
+            {% endif %}
+        </div> 
+        <!-- This above line is used to display the var and see the part of code in views.py -->
         <div class="project-list">
             <h2>Projects I've Worked On</h2>
             <ul>
