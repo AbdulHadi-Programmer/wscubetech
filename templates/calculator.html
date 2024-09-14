@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+<body>
+    <section class="calculator-container">
+        <h1>Calculator</h1>
+        <div class="calculator-form-container">
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="num1">Value 1:</label>
+                    <input type="text" name="num1" id="num1" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="opr">Select Operator:</label>
+                    <select name="opr" id="opr" class="form-control">
+                        <option value="+">+</option>
+                        <option value="-">-</option>
+                        <option value="*">*</option>
+                        <option value="/">/</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="num2">Value 2:</label>
+                    <input type="text" name="num2" id="num2" class="form-control">
+                </div>
+                <button type="submit" class="btn">Calculate</button>
+                <div class="form-group">
+                    <label for="output">Output:</label>
+                    <input type="text" id="output" class="form-control" value="{{c}}" readonly>
+                </div>
+            </form>
+        </div>
+    </section>
+</body>
+</html>
