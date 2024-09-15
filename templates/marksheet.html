@@ -1,0 +1,106 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marksheet</title>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #E6F7FF; /* Light blue background */
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Container Styling */
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #ffffff;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #0A1045; /* Dark blue for heading */
+            margin-bottom: 30px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #0A1045;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #87CEEB; /* Sky blue button */
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #00C2D1; /* Hover effect - teal */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- {% include 'nav_bar.html' %} -->
+    <!-- Add the nav bar manually becuase the css replace and destroy the css -->
+    
+    <!-- Marksheet Form -->
+    <div class="container">
+        <h1>Marksheet</h1>
+        <form method="post">
+            {% csrf_token %}
+            <label for="subject1">Subject 1:</label>
+            <input type="text" name="subject1" class="form-control" placeholder="Enter marks for subject 1">
+
+            <label for="subject2">Subject 2:</label>
+            <input type="text" name="subject2" class="form-control" placeholder="Enter marks for subject 2">
+
+            <label for="subject3">Subject 3:</label>
+            <input type="text" name="subject3" class="form-control" placeholder="Enter marks for subject 3">
+
+            <label for="subject4">Subject 4:</label>
+            <input type="text" name="subject4" class="form-control" placeholder="Enter marks for subject 4">
+
+            <label for="subject5">Subject 5:</label>
+            <input type="text" name="subject5" class="form-control" placeholder="Enter marks for subject 5">
+
+            <button type="submit">Generate Marksheet</button> 
+            <br><br>
+            <!-- Optional: Display Results -->
+            <label for="total">Total Marks:</label>
+            <input type="text" name="total" class="form-control" readonly value="{{ total }}">
+
+            <label for="percentage">Percentage:</label>
+            <input type="text" name="percentage" class="form-control" readonly value="{{ percentage }}">
+
+            <label for="division">Division:</label>
+            <input type="text" name="division" class="form-control" readonly value="{{ division }}">
+        <br><br>
+        </form>
+    </div>
+
+    <!-- {% include 'footer.html' %} -->
+</body>
+</html>

@@ -120,3 +120,55 @@ def calculator(request):
         c = "Invalid Operation"
     print(c)
     return render(request, 'calculator.html', {'c':c}) # The c is send to html file and it will be easily used
+
+
+@csrf_exempt
+def evenodd(request):
+    try:
+        c = ''
+        if request.method == "POST":
+            n = eval(request.POST.get('num1'))
+            if n % 2 == 0:
+                c = 'Even'
+            elif n % 2 != 0:
+                c = 'Odd'
+            
+    except:
+        c = 'Invalid Input'
+        
+        return render(request, 'evenodd.html', {'c':c})
+    
+@csrf_exempt
+def marksheet(request):
+    if request.method == 'POST':
+        subject1 = int(request.POST.get('subject1', 0)) # Get the value from html file 
+        subject2 = int(request.POST.get('subject2', 0))
+        subject3 = int(request.POST.get('subject3', 0))
+        subject4 = int(request.POST.get('subject4', 0))
+        subject5 = int(request.POST.get('subject5', 0))
+
+        # Calculate the total and percentage :
+        total = subject1 + subject2 + subject3 + subject4 + subject5
+        percentage = (total / 500) * 100
+
+        # Determine division based on percentage 
+        if percentage >= 85:
+            division = 'First Division'
+        elif percentage >= 70:
+            division = 'Second Division'
+        elif percentage >= 60:
+            division = 'Third Division'
+        elif percentage >= 50:
+            division = 'Fourth Division'
+        elif percentage >= 40:
+            division = 'Five Division'
+        else: 
+            division = 'Fail'
+
+        # pass the data back to the template 
+        return render(request, 'marksheet.html', {
+            'total':total,
+            'percentage':percentage,
+            'division':division
+        })
+    return render(request, 'marksheet.html')

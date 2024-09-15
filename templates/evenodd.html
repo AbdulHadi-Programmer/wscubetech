@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #E6F7FF; /* Light blue background */
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navigation bar */
+        nav {
+            background-color: #87CEEB; /* Sky blue color */
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav h1 {
+            margin: 0;
+            color: #fff;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #ffffff;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #0A1045; /* Dark blue for heading */
+        }
+
+        label {
+            font-weight: bold;
+            color: #0A1045;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #87CEEB; /* Sky blue button */
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #00C2D1; /* Hover effect - teal */
+        }
+        
+        .output-label {
+            margin-top: 15px;
+            display: block;
+            font-size: 18px;
+            color: #0A1045;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <h1>Even Odd Checker</h1>
+    </nav>
+
+    <!-- Calculator Form -->
+    <div class="container">
+        <h1>Even Odd</h1>
+        <form method="post">
+            {% csrf_token %}
+            <label for="num1">Enter a Value:</label>
+            <input type="text" name="num1" class="form-control" placeholder="Enter a number">
+            
+            <button type="submit">Check Even | Odd</button> 
+
+            <label class="output-label">Output:</label>
+            <input type="text" value="{{c}}" class="form-control" readonly>
+        </form>
+    </div>
+
+</body>
+</html>
