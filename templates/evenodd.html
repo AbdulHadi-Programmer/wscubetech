@@ -85,6 +85,11 @@
     <div class="container">
         <h1>Even Odd</h1>
         <form method="post">
+            {% if error %}
+                <div class="alert alert-danger" role="alert" style="background-color: rgb(251, 167, 167)">
+                    Please Enter the Value
+                </div><br>
+            {% endif %}
             {% csrf_token %}
             <label for="num1">Enter a Value:</label>
             <input type="text" name="num1" class="form-control" placeholder="Enter a number">
@@ -92,7 +97,7 @@
             <button type="submit">Check Even | Odd</button> 
 
             <label class="output-label">Output:</label>
-            <input type="text" value="{{c}}" class="form-control" readonly>
+            <input type="text" value="{{ c }}" class="form-control" readonly>
         </form>
     </div>
 

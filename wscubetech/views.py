@@ -122,22 +122,57 @@ def calculator(request):
     return render(request, 'calculator.html', {'c':c}) # The c is send to html file and it will be easily used
 
 
+# @csrf_exempt
+# def evenodd(request):
+#     try:
+#         c = ''
+#         if request.method == "POST":
+#             if request.POST.get('num1'):
+#                 return render(request, "evenodd.html", {"error": True})
+#             n = int(request.POST.get('num1'))
+#             if n % 2 == 0:
+#                 c = 'Even'
+#             elif n % 2 != 0:
+#                 c = 'Odd'
+            
+#             return render(request, "evenodd.html", {"c": c})
+            
+#     except ValueError:
+#         c = 'Invalid Input'
+        
+#     return render(request, 'evenodd.html', {'c':c})
+from django.views.decorators.csrf import csrf_exempt
+from django.shortcuts import render
+
 @csrf_exempt
 def evenodd(request):
+    c = ''
     try:
-        c = ''
         if request.method == "POST":
-            n = eval(request.POST.get('num1'))
+
+            # If num1 is not provided, show error
+            if request.POST.get('num1')=="":
+                return render(request, "evenodd.html", {"error": True})#, "message": "Number is required"})
+
+            num1 = request.POST.get('num1')
+            # Try to convert num1 to integer
+            n = int(num1)
+
             if n % 2 == 0:
                 c = 'Even'
-            elif n % 2 != 0:
+            else:
                 c = 'Odd'
             
-    except:
+            return render(request, "evenodd.html", {"c": c})
+
+    except ValueError:
+        # Handle invalid integer input
         c = 'Invalid Input'
-        
-        return render(request, 'evenodd.html', {'c':c})
-    
+
+    return render(request, 'evenodd.html', {'c': c})
+
+
+
 @csrf_exempt
 def marksheet(request):
     if request.method == 'POST':
