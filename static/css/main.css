@@ -426,77 +426,19 @@ body {
     background-color: #0A1045;
 }
 
-/* Calculator Container */
-/* Css is not applied properly */
-.calculator-container {
-    padding: 50px 20px;
-    background-color: #f7f9fc;
-    text-align: center;
-}
-
-.calculator-container h1 {
-    font-size: 2.5em;
-    color: #0A1045;
-    margin-bottom: 10px;
-}
-
-.calculator-form-container {
-    max-width: 600px;
-    margin: 0 auto;
-    background-color: #fff;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-}
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-control {
+/* CSS Styling for marquee tag */
+marquee{
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-
-.btn {
-    background-color: #00C2D1;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-.calculator-form {
+    height: 50px;
+    color: #fff; /* Initial text color */
+    font-size: 32px; /* Adjust as needed */
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    overflow: hidden; /* Ensure text does not overflow */
+    background-color: chartreuse;
+    display: block;
 }
-
-/* Input and Button Styles */
-.calculator-form input, .calculator-form button {
-    width: 100%;
-    padding: 10px;
-    font-size: 1.1em;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    outline: none;
-    margin-bottom: 20px;
-}
-
-.calculator-form input:focus, .calculator-form button:focus {
-    border-color: #00C2D1; /* Light blue border on focus */
-    box-shadow: 0 0 5px rgba(0, 194, 209, 0.5);
-}
-
-.calculator-form button {
-    background-color: #00C2D1; /* Light blue button */
+marquee a{
     color: #fff;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.calculator-form button:hover {
-    background-color: #0A1045; /* Dark blue button on hover */
+    font-weight: bold;
 }

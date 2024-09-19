@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services</title>
+    <style>
+        /* Reset some default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            padding: 20px;
+        }
+
+        /* Row container */
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 20px;
+        }
+
+        /* Service card styling */
+        .col-lg-4, .col-md-6 {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            transition: transform 0.3s ease;
+            max-width: 350px;
+            flex: 1 1 calc(33.33% - 20px); /* Responsive flexbox */
+        }
+
+        /* Hover effect for the service cards */
+        .col-lg-4:hover, .col-md-6:hover {
+            transform: scale(1.05);
+        }
+
+        /* Service title styling */
+        h3 {
+            font-size: 1.5rem;
+            color: #0A1045;
+            margin-bottom: 10px;
+        }
+
+        /* Service description styling */
+        p {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* Service icon styling */
+        .service-icon {
+            font-size: 2rem;
+            color: #00C2D1;
+            margin-top: 10px;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .col-lg-4, .col-md-6 {
+                flex: 1 1 calc(50% - 20px);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .col-lg-4, .col-md-6 {
+                flex: 1 1 100%;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <br><br>
+    <div class="row">
+        {% for service in servicesData %}
+            <div class="col-lg-4 col-md-6">
+                <!-- {# safe is used to filter the content and if any html tag are find then it is applied} -->
+                <p class="service-icon">{{ service.service_icon | safe }}</p>
+                <h3>{{ service.service_title | title | safe }}</h3> <!-- {# lower is used to make the text lower}   -->
+                <p>{{ service.service_description | capfirst | safe | slice:"0:3"}}</p> 
+                <!-- capfirst: first letter capital, wordcount: count the words in a para,
+                length: count the characters in the content ,slice:"0:3" cut and print the first word in slice same as string,
+                 ,see more in official documentation-->
+
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</body>
+</html>

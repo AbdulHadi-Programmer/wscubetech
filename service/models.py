@@ -14,3 +14,4 @@ class Service(models.Model):
     service_title = models.CharField(max_length=50)
     service_description = models.TextField()
 
+# After Creating the model , run the two migrations command

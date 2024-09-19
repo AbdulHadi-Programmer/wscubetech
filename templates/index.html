@@ -14,7 +14,15 @@
     {% block content %}
     
     {% include 'header.html' %}
-    
+
+    <marquee behavior="" direction="left">
+        {% for news in newsData %}
+        <a href="">  <strong>{{news.news_title}}</strong></a>  &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; 
+        {% endfor %}
+    </marquee>
+    <!-- news_title = models.CharField(max_length=100)
+    news_description -->
+
     <!-- Featured Projects Section -->
     <section class="featured-projects">
         <h2>Featured Projects</h2>
@@ -39,6 +47,7 @@
         <h2>Get in Touch</h2>
         <p>If you're interested in working together or learning more about my services, feel free to <a href="{% url 'contact' %}">contact me</a> or check out my <a href="{% url 'services' %}">services</a>.</p>
     </section>
+
     {% endblock %}
     
 </body>

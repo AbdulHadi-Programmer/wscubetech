@@ -23,6 +23,7 @@ from django.contrib import admin
 from django.urls import path
 from wscubetech import views
 
+
 urlpatterns = [
     path('', views.HomePage, name='home'),
     path('admin/', admin.site.urls),
@@ -34,4 +35,6 @@ urlpatterns = [
     path('calculator/', views.calculator, name='calculator'),
     path('evenodd/', views.evenodd, name='evenodd'),
     path('marksheet/', views.marksheet, name='marksheet'),
+    path('home/', views.NewPage, name="new"),
+
 ]

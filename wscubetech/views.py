@@ -2,27 +2,53 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views.decorators.csrf import csrf_exempt
-# Import the form file into views
 from .forms import *
+from service.models import Service
+from news_app.models import News
+
+# @csrf_exempt
+# def HomePage(request):
+#     # Now we are getting data from database and render it on html page.
+#     servicesData = Service.objects.all() # object is a class
+#     # for a in servicesData:
+#     #     print(a.service_icon, "\n\n\n")
+#     print(servicesData)
+#     # data = {
+#     #     'servicesData': servicesData
+#     # }
+#     # servicesData = 'servicesData'
+#     # for service in servicesData:
+#     #     print(service.title, service.description)
+ 
+#     # data = {
+#     #     'title' : 'Home Page',
+#     #     'bdata': 'Hello I am a Developer',
+#     #     'clist': ['python', 'js', 'java', 'c', 'go', 'dart'],
+#     #     # 'numbers' : [],
+#     #     'numbers' : [11, 22, 33, 44, 55, 66],
+#     #     'student_detail': [
+#     #         {'name': 'Student 1', 'age': 19},
+#     #         {'name': 'Student 2', 'age': 29}
+#     #     ]
+#     # }
+#     return render(request, "index.html", {'servicesData': servicesData})
+
+@csrf_exempt
+def NewPage(request):
+    # Fetch all services from the database
+    servicesData = Service.objects.all() 
+
+    # Pass servicesData directly to the template
+    return render(request, "new.html", {'servicesData': servicesData})
+
+
 
 @csrf_exempt
 def HomePage(request):
-    # data = {
-    #     'title' : 'Home Page',
-    #     'bdata': 'Hello I am a Developer',
-    #     'clist': ['python', 'js', 'java', 'c', 'go', 'dart'],
-    #     # 'numbers' : [],
-    #     'numbers' : [11, 22, 33, 44, 55, 66],
-    #     'student_detail': [
-    #         {'name': 'Student 1', 'age': 19},
-    #         {'name': 'Student 2', 'age': 29}
-    #     ]
-    # }
-    return render(request, "index.html")
+    newsData = News.objects.all()
+    
+    return render(request, 'index.html', {'newsData': newsData})
 
-@csrf_exempt
-def HomePage(request):
-    return render(request, 'index.html')
 
 @csrf_exempt
 def aboutUs(request):
