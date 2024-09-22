@@ -15,11 +15,19 @@
     
     {% include 'header.html' %}
 
-    <marquee behavior="" direction="left">
+    <!-- <marquee behavior="" direction="left" onmouseover="stop()" onmouseout="start()">
         {% for news in newsData %}
-        <a href="">  <strong>{{news.news_title}}</strong></a>  &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; 
+        <a href="newsdetails.html/{{ news.id }}">  <strong>{{news.news_title}}</strong></a>  &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; 
+        
+        {% endfor %}
+    </marquee> -->
+    <marquee behavior="" direction="left" onmouseover="stop()" onmouseout="start()">
+        {% for news in newsData %}
+        <a href="{% url 'newsDetail' news.id %}">  <strong>{{news.news_title}} &nbsp;&nbsp;&nbsp;|</strong></a> &nbsp;&nbsp;&nbsp;
         {% endfor %}
     </marquee>
+    
+
     <!-- news_title = models.CharField(max_length=100)
     news_description -->
 

@@ -49,16 +49,54 @@ def HomePage(request):
     
     return render(request, 'index.html', {'newsData': newsData})
 
+@csrf_exempt
+def newsDetail(request, news_id):
+    try:
+        newsDetail = News.objects.get(id=news_id) 
+        # .get is used to get single paramenter and it required id and we give news_id that is connected to each news 
+    except News.DoesNotExist:
+        # Handle the case where the news does not exist (you can render a 404 or redirect)
+        return HttpResponse('News item not found', status=404)
+    
+    return render(request, "newsdetails.html", {'newsDetail': newsDetail})
+
 
 @csrf_exempt
 def aboutUs(request):
     if request.method == "GET":
         output = request.GET.get('output', None)   # This var used to get the output 
         return render(request, 'about.html', {'output':output})  # Display the var as json
+from django.shortcuts import render
+from django.views.decorators.csrf import csrf_exempt
+from .models import Service  # Assuming Service model is defined
 
 @csrf_exempt
 def services(request):
-    return render(request, 'services.html')
+    serviceData = Service.objects.all()
+    
+    if request.method == 'GET':
+        st = request.GET.get('servicename')  # Capture search query
+        if st:  # Only filter if there's a search query
+            serviceData = Service.objects.filter(service_title__icontains=st)  # Use icontains for partial matches
+    
+    data = {
+        'serviceData': serviceData,
+    }
+    
+    return render(request, 'services.html', data)
+
+@csrf_exempt
+def new(request):
+    serviceData = Service.objects.all()
+    
+    if request.method == 'GET':
+        st = request.GET.get('servicename')  # Capture search query
+        if st:  # Only filter if there's a search query
+            serviceData = Service.objects.filter(service_title__icontains=st)
+    data = {
+        'serviceData': serviceData,
+    }
+    return render(request, 'new.html', data)
 
 @csrf_exempt
 def contact(request):

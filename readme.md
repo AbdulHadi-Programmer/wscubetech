@@ -11,4 +11,11 @@ this on google and learn on thier official documentation
 * It is First Downloaded Externally 
 * It is used to add text editor in any field like see the new app
 
-## Display news in Marquee Tag
+## Display news in Marquee Tag:
+- It is used to display content in sliding way and it is a html tag.
+
+## Reset Django Password:
+- cmd : python manage.py changepassword username 
+- new password is set of admin : "19-01-2006"
+
+## 

@@ -441,4 +441,5 @@ marquee{
 marquee a{
     color: #fff;
     font-weight: bold;
+    text-decoration: none;
 }

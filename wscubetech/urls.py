@@ -36,5 +36,6 @@ urlpatterns = [
     path('evenodd/', views.evenodd, name='evenodd'),
     path('marksheet/', views.marksheet, name='marksheet'),
     path('home/', views.NewPage, name="new"),
-
+    path('newsdetails/<int:news_id>', views.newsDetail, name='newsDetail'),
+    path('new/', views.new),
 ]
