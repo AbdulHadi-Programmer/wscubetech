@@ -1,14 +1,15 @@
 # Group Policies / Structure / Rules
+## ( Emergency If occur then it may be disagree )
 
-## 1. Late Arrival Policy:
+## 1. Late Arrival Policy:  
 - Members must arrive on time for all group meetings and activities.
 - A grace period of 5 minutes is allowed after the scheduled time.
 - If a Member arrives more than 5 minutes late without prior notice, a fine of **50 pkr** will be imposed.
-- Late arrivals are excused if the member informed the group at least 30 minutes before the scheduled time.
+- Late arrivals are excused if the member informed the group on whatsapp at least 30 minutes and also give a proper genuine reason before the scheduled time.
 
 ## 2. Absence Policy:
 - Members may be absent from a meeting or activity if they have a genuine reason.
-  The member must inform the group before the meeting.
+- The member must inform the group before the 30 minutes of meeting.
 - If a member is absent without informing the group, a fine of **100 pkr** will be imposed.
 
 ## 3. Task Completion Policy:

@@ -23,7 +23,8 @@
     </marquee> -->
     <marquee behavior="" direction="left" onmouseover="stop()" onmouseout="start()">
         {% for news in newsData %}
-        <a href="{% url 'newsDetail' news.id %}">  <strong>{{news.news_title}} &nbsp;&nbsp;&nbsp;|</strong></a> &nbsp;&nbsp;&nbsp;
+        <!-- <a href="{% url 'newsDetail' news.id %}"> -->
+        <a href="/newsdetails/{{news.news_slug}}"> <strong>{{news.news_title}} &nbsp;&nbsp;&nbsp;|</strong></a> &nbsp;&nbsp;&nbsp; 
         {% endfor %}
     </marquee>
     

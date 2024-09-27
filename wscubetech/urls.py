@@ -17,8 +17,6 @@ Including another URLconf
 1. int, 2. str, 3. slug
 
 """
-
-from wscubetech import views
 from django.contrib import admin
 from django.urls import path
 from wscubetech import views
@@ -36,6 +34,7 @@ urlpatterns = [
     path('evenodd/', views.evenodd, name='evenodd'),
     path('marksheet/', views.marksheet, name='marksheet'),
     path('home/', views.NewPage, name="new"),
-    path('newsdetails/<int:news_id>', views.newsDetail, name='newsDetail'),
+    path('newsdetails/<slug>', views.newsDetail, name='newsDetail'),
+    # <int:news_id>
     path('new/', views.new),
 ]

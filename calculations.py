@@ -1,95 +1,90 @@
-# def calculate_member_distribution(project_amount, number_of_person):
-#     # Calculate for Member
-#     hunter_amount = project_amount * 0.20
-#     lead_amount = project_amount * 0.10
-#     group_fund_amount = project_amount * 0.25
-#     member_amount = project_amount * 0.45
-    
-#     divide = member_amount / number_of_person
-
-#     # Display results
-#     print(f"\n--- Earnings Distribution for Member ---")
-#     print(f"Total Earnings from Project: {project_amount} PKR")
-#     print(f"To Project Hunter: {hunter_amount} PKR")
-#     print(f"To Lead: {lead_amount} PKR")
-#     print(f"To Group Fund: {group_fund_amount} PKR")
-#     print(f"Amount Received by Member: {member_amount} PKR\n")
-#     print(f"Amount Received by {number_of_person} member/s: each get {divide} PKR")
-
-
-# def calculate_core_distribution(project_amount, number_of_person):
-#     # Calculate for Core Member
-#     hunter_amount = project_amount * 0.20
-#     lead_amount = project_amount * 0.10
-#     group_fund_amount = project_amount * 0.15
-#     core_amount = project_amount * 0.55
-
-#     divide = core_amount / number_of_person
-
-#     # Display results
-#     print(f"\n--- Earnings Distribution for Core Member ---")
-#     print(f"Total Earnings from Project: {project_amount} PKR")
-#     print(f"To Project Hunter: {hunter_amount} PKR")
-#     print(f"To Lead: {lead_amount} PKR")
-#     print(f"To Group Fund: {group_fund_amount} PKR")
-#     print(f"Amount Received by Core Member: {core_amount:.2f} PKR\n")
-#     print(f"Amount Received by {number_of_person} member/s with core is : each get {divide} PKR")
-
-
-# def calculate_lead_distribution(project_amount, number_of_person):
-#     # Calculate for Lead
-#     hunter_amount = project_amount * 0.20
-#     lead_amount = project_amount * 0.05
-#     group_fund_amount = project_amount * 0.05
-#     lead_share = project_amount * 0.70
-
-#     divide = lead_share / number_of_person
-#     # Display results
-#     print(f"\n--- Earnings Distribution for Lead ---")
-#     print(f"Total Earnings from Project: {project_amount} PKR")
-#     print(f"To Project Hunter: {hunter_amount} PKR")
-#     print(f"To Lead: {lead_amount} PKR")
-#     print(f"To Group Fund: {group_fund_amount} PKR")
-#     print(f"Amount Received by Lead: {lead_share:.2f} PKR\n")
-#     print(f"Amount Received by {number_of_person} member/s is : each get {divide} PKR")
-
-
-# # Main function
-# if __name__ == "__main__":
-#     user_role = input("Enter your role (member/core/lead): ").strip().lower()
-#     project_amount = float(input("Enter the total earnings from the project (in PKR): "))
-#     number_of_person = int(input("Enter the Number of Person work on Project: "))
-
-#     if user_role == 'member':
-#         calculate_member_distribution(project_amount, number_of_person)
-#     elif user_role == 'core':
-#         calculate_core_distribution(project_amount, number_of_person)
-#     elif user_role == 'lead':
-#         calculate_lead_distribution(project_amount, number_of_person)
-#     else:
-#         print("Invalid role! Please enter 'member', 'core', or 'lead'.")
-
-
-print("The Money Distributer in the System")
+print("Dynamic Scripts Team: \nThe Money Distributer in the System \n---------------------------------------")
 
 # Lead
-def calculate_lead_distribution(self, total_project):
+def calculate_lead_distribution(total_project):
     project_hunter = total_project * 0.20
     group_fund = total_project * 0.05 # Calculate and give the 5% of total project 
-    lead_share = total_project * 0.70 # Calculate an
+    lead_share = total_project * 0.75 # Calculate lead share
+    # lead_share = total_project - project_hunter - group_fund 
+    num_of_member = int(input("Enter the No of Members Worked on this Project: "))
+    no_per_person = (lead_share - 10000) / num_of_member
+    lead_with_person_share = no_per_person + 10_000
 
-    
+    if num_of_member > 1:  
+        print(f"Lead get {no_per_person} pkr + 10_000 = {lead_with_person_share} because he has main authority and responsibility")  
+        print(f"The Money is Divided into {num_of_member:.2f} Members, each get: {no_per_person} ")
+    else: 
+        print(f"The Amount that Lead get (75%) : {lead_share} pkr ")
 
-print(1000/200)
-print(1000*0.05)
+    print(f"The Project Total Cost is : {total_project} pkr")
+    print(f"The Project Hunter get (20%): {project_hunter} pkr \n\n\n")
+    # print(f"The Lead give Group Fund (5%) : {group_fund} pkr ")
 
+calculate_lead_distribution(100_000)
+
+# def the(prompt):
+#     print(prompt)
+# the("Abdul Hadi is a Developer and Programmer")
 
 # Core Members
-def calculate_core_distribution(self):
-    pass
+def calculate_core_distribution(total_project):
+    project_hunter = total_project * 0.20
+    group_fund = total_project * 0.15 # Calculate and give the 5% of total project 
+    lead_share = total_project * 0.10 # Calculate lead share
+    core_amount = total_project * 0.55 # Calculate core share
+    num_of_member = int(input("Enter the No of Members Worked on this Project: "))
+    no_per_person = core_amount / num_of_member
 
-# Members
-def calculate_core_distribution(self):
-    pass
+    print(f"*) The Project Total Cost is: {total_project} pkr")
+    print(f"1.  The Project Hunter get (20%): {project_hunter} pkr")
+    print(f"2. The Group Fund He Give (15%): {group_fund} pkr ")
+    print(f"3. The Lead get (10%): {lead_share} pkr ")
+
+    if num_of_member > 1 :    
+        print(f"4. The Money is Divided into {num_of_member:.2f} Members, each get: {no_per_person} ")
+
+    else:
+        print(f"4. The Core Team Member get (55%): {core_amount:.2f} pkr \n\n\n")
+
+calculate_core_distribution(100_000)
 
 
+# Members :
+def calculate_member_distribution(total_project):
+    project_hunter = total_project * 0.20
+    group_fund = total_project * 0.25 # Calculate and give the 5% of total project 
+    lead_share = total_project * 0.10 # Calculate lead share
+    member_amount = total_project * 0.45 # Calculate lead share
+    no_of_members = int(input("Enter the No of Members Worked on this Project."))
+    no_per_person = member_amount / no_of_members
+
+
+    print(f"*) The Project Total Cost is: {total_project} pkr")
+    print(f"1.  The Project Hunter get (20%): {project_hunter} pkr")
+    print(f"2. The Group Fund He Give (25%): {group_fund} pkr ")
+    print(f"3. The Lead get (10%): {lead_share} pkr ")
+
+    if no_of_members > 1:
+        print(f"4. The Money is Divided into {no_of_members} Members, each get: {no_per_person} ")
+
+    else:
+        print(f"4. The Team Member get (45%): {member_amount} pkr \n\n\n")
+
+calculate_member_distribution(100_000)
+
+
+def calculate_group_fund_distribution():   # fund):
+    # current_fund = 200
+    fund = 200
+
+    food_entertainment = fund * 0.20
+    group_rewards = fund * 0.30
+    group_expenses = fund * 0.50
+    
+    print(f"*) The Fund is Distributed into 3 Parts:")
+    print(f"-  The Total Fund is : {fund}")
+    print(f"1. The Food and Entertainment is (20%): {food_entertainment} pkr")
+    print(f"2. The Group Rewards is (30%): {group_rewards} pkr")
+    print(f"3. The Group Expenses is (50%): {group_expenses} pkr ")
+
+calculate_group_fund_distribution()

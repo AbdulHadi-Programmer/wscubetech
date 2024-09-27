@@ -3,8 +3,10 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views.decorators.csrf import csrf_exempt
 from .forms import *
-from service.models import Service
+# from service.models import Service
 from news_app.models import News
+from service.models import Service  # Correct import
+from django.core.paginator import Paginator
 
 # @csrf_exempt
 # def HomePage(request):
@@ -50,9 +52,9 @@ def HomePage(request):
     return render(request, 'index.html', {'newsData': newsData})
 
 @csrf_exempt
-def newsDetail(request, news_id):
+def newsDetail(request, slug):   # news_id is removed by news_slug
     try:
-        newsDetail = News.objects.get(id=news_id) 
+        newsDetail = News.objects.get(news_slug = slug)  # 
         # .get is used to get single paramenter and it required id and we give news_id that is connected to each news 
     except News.DoesNotExist:
         # Handle the case where the news does not exist (you can render a 404 or redirect)
@@ -66,9 +68,6 @@ def aboutUs(request):
     if request.method == "GET":
         output = request.GET.get('output', None)   # This var used to get the output 
         return render(request, 'about.html', {'output':output})  # Display the var as json
-from django.shortcuts import render
-from django.views.decorators.csrf import csrf_exempt
-from .models import Service  # Assuming Service model is defined
 
 @csrf_exempt
 def services(request):
@@ -85,18 +84,37 @@ def services(request):
     
     return render(request, 'services.html', data)
 
-@csrf_exempt
+
+
+
+
+
+from django.core.paginator import Paginator
 def new(request):
     serviceData = Service.objects.all()
+
+    # if request.method == 'GET': 
+    #     st = request.GET.get('servicename')  # Capture search query
+    #     if st:  # Only filter if there's a search query
+    #         serviceData = Service.objects.filter(service_title__icontains=st)
+    st = request.GET.get('servicename')
+
+    # Filter services based on the search query if it exists
+    if st:
+        serviceData = Service.objects.filter(service_title__icontains=st)
+    else:
+        serviceData = Service.objects.all()
+
+    # Apply Pagination:
+    paginator = Paginator(serviceData, 2)  #  Show 2 services per page
+    page_number = request.GET.get('page')  #  Add page num and show services on each page / # Get the current page number from the URL
+    serviceDatafinal = paginator.get_page(page_number)  # # Get the posts for that page
     
-    if request.method == 'GET':
-        st = request.GET.get('servicename')  # Capture search query
-        if st:  # Only filter if there's a search query
-            serviceData = Service.objects.filter(service_title__icontains=st)
     data = {
-        'serviceData': serviceData,
+        'serviceData': serviceDatafinal,
     }
     return render(request, 'new.html', data)
+
 
 @csrf_exempt
 def contact(request):

@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'service',
     'tinymce',
     'news_app',
+    'wscubetech',
 ]
 
 MIDDLEWARE = [
