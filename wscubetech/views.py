@@ -3,10 +3,10 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views.decorators.csrf import csrf_exempt
 from .forms import *
-# from service.models import Service
 from news_app.models import News
 from service.models import Service  # Correct import
 from django.core.paginator import Paginator
+from contactenquiry.models import contactEnquiry
 
 # @csrf_exempt
 # def HomePage(request):
@@ -35,20 +35,20 @@ from django.core.paginator import Paginator
 #     # }
 #     return render(request, "index.html", {'servicesData': servicesData})
 
-@csrf_exempt
-def NewPage(request):
-    # Fetch all services from the database
-    servicesData = Service.objects.all() 
+# @csrf_exempt
+# def NewPage(request):
+#     # Fetch all services from the database
+#     servicesData = Service.objects.all() 
 
-    # Pass servicesData directly to the template
-    return render(request, "new.html", {'servicesData': servicesData})
+#     # Pass servicesData directly to the template
+#     return render(request, "new.html", {'servicesData': servicesData})
 
 
 
+    
 @csrf_exempt
 def HomePage(request):
     newsData = News.objects.all()
-    
     return render(request, 'index.html', {'newsData': newsData})
 
 @csrf_exempt
@@ -85,18 +85,9 @@ def services(request):
     return render(request, 'services.html', data)
 
 
-
-
-
-
 from django.core.paginator import Paginator
 def new(request):
-    serviceData = Service.objects.all()
-
-    # if request.method == 'GET': 
-    #     st = request.GET.get('servicename')  # Capture search query
-    #     if st:  # Only filter if there's a search query
-    #         serviceData = Service.objects.filter(service_title__icontains=st)
+    # Capture search query (if any)
     st = request.GET.get('servicename')
 
     # Filter services based on the search query if it exists
@@ -105,18 +96,28 @@ def new(request):
     else:
         serviceData = Service.objects.all()
 
+    print(f"Service data: {serviceData}")  # Debugging print
+
     # Apply Pagination:
-    paginator = Paginator(serviceData, 2)  #  Show 2 services per page
-    page_number = request.GET.get('page')  #  Add page num and show services on each page / # Get the current page number from the URL
-    serviceDatafinal = paginator.get_page(page_number)  # # Get the posts for that page
-    
+    paginator = Paginator(serviceData, 2)  # Show 2 services per page
+    page_number = request.GET.get('page')  # Get the current page number from the URL
+    serviceDatafinal = paginator.get_page(page_number)  # Get the services for the current page
+    totalpage = serviceDatafinal.paginator.num_pages  # Total number of pages
+    totalpagelist = [n+1 for n in range(totalpage)]  # List of page numbers
+
+    # Prepare data for the template
     data = {
         'serviceData': serviceDatafinal,
+        'lastpage': totalpage,
+        'totalpagelist': totalpagelist,
     }
+
+    print(f"Final paginated data: {serviceDatafinal}")  # Debugging print
+
+    # Render the template
     return render(request, 'new.html', data)
 
-
-@csrf_exempt
+      
 def contact(request):
     return render(request, 'contact.html')
 
@@ -289,3 +290,26 @@ def marksheet(request):
             'division':division
         })
     return render(request, 'marksheet.html')
+
+# This is to save the contact page data to database
+def saveEnquiry(request):
+    """
+    This Function will save Data to DB:
+    - Import the specific app model
+    - Get the Input Tag of contact.html
+    - then call the model class and give the argument of input tags 
+    - last is to save data using:  data.save()
+    """
+    n = ''
+    if request.method == "POST":
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        message = request.POST.get('message')
+        
+        print(name, email, message)
+        
+        data = contactEnquiry(name=name, email= email, message=message)
+        data.save()
+        n = 'Data Inserted'
+    return render(request, 'contact.html', {'n': n})
+

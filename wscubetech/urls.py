@@ -20,7 +20,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from wscubetech import views
-
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('', views.HomePage, name='home'),
@@ -33,8 +34,14 @@ urlpatterns = [
     path('calculator/', views.calculator, name='calculator'),
     path('evenodd/', views.evenodd, name='evenodd'),
     path('marksheet/', views.marksheet, name='marksheet'),
-    path('home/', views.NewPage, name="new"),
+    # path('home/', views.NewPage, name="newPage"),
     path('newsdetails/<slug>', views.newsDetail, name='newsDetail'),
     # <int:news_id>
-    path('new/', views.new),
+    path('new/', views.new, name="new"),
+    path('saveenquiry/', views.saveEnquiry, name="saveenquiry")
+
 ]
+
+# Add the static and media url when debug is true
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT )

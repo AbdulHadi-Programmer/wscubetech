@@ -18,20 +18,23 @@
     <section class="contact-section">
         <h1>Contact Me</h1>
         <p>If you have any questions or just want to get in touch, feel free to send a message!</p>
-
+        {% csrf_token %}
         <div class="contact-form-container">
-            <form class="contact-form">
+            {{ n }}
+            <!-- Method is imp to save data into database and also csrf_token -->
+            <form class="contact-form" action="{% url 'saveenquiry' %}" method="POST">
+                {% csrf_token %}
                 <div class="form-group">
                     <label for="name">Your Name</label>
-                    <input type="text" id="name" placeholder="Enter your name" required>
+                    <input type="text" id="name" name="name"  placeholder="Enter your name" required>
                 </div>
                 <div class="form-group">
                     <label for="email">Your Email</label>
-                    <input type="email" id="email" placeholder="Enter your email" required>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
                 </div>
                 <div class="form-group">
                     <label for="message">Your Message</label>
-                    <textarea id="message" rows="5" placeholder="Enter your message" required></textarea>
+                    <textarea id="message" rows="5" name="message" placeholder="Enter your message" required></textarea>
                 </div>
                 <button type="submit" class="btn">Send Message</button>
             </form>

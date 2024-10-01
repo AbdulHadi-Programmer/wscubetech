@@ -64,43 +64,48 @@
         <button type="submit">Search</button>
     </form>
 
-    <div>
-        {% if serviceData %}
+    <!-- Service listing -->
+    {% if serviceData %}
         {% for service in serviceData %}
-        <div class="service">
-            <h2>{{ service.service_title | safe }}</h2>
-            <p>{{ service.service_description | safe }}</p>
-        </div>  
+            <div class="service">
+                <h2>{{ service.service_title | safe }}</h2>
+                <p>{{ service.service_description | safe }}</p>
+            </div>
         {% endfor %}
-        {% else %}
+    {% else %}
         <p class="no-services">No services found.</p>
+    {% endif %}
+
+
+    <!-- {{totalpagelist}} -->
+
+<!-- Pagination controls -->
+<nav aria-label="...">
+    <ul class="pagination">
+        {% if serviceData.has_previous %}
+        <li class="page-item">
+            <a class="page-link" tabindex="-1" href="/new/?page={{ serviceData.previous_page_number }}">Previous</a>
+        </li>
+        <li class="page-item">
+            <a class="page-link" href="/new/?page=1" tabindex="-1">First</a>
+        </li>
         {% endif %}
-    </div>
 
-    <nav aria-label="...">
-        <ul class="pagination">
-          {% if serviceData.has_previous %}
-          
-            <li class="page-item">
-            <a class="page-link" tabindex="-1" href="/new/?page={{servicesData.previous_page_number}}">Previous</a>
-          </li>
-          
-          <li class="page-item ">
-              <a class="page-link" href="/new/?page=1" tabindex="-1" >First </a>
-            </li>
-            {% endif %}
+        {% for page in totalpagelist %}
+        <li class="page-item"><a class="page-link" href="/new/?page={{ page }}">{{ page }}</a></li>
+        {% endfor %}
 
+        {% if serviceData.has_next %}
+        <li class="page-item">
+            <a class="page-link" href="/new/?page={{ serviceData.next_page_number }}">Next</a>
+        </li>
+        <li class="page-item">
+            <a class="page-link" href="/new/?page={{ lastpage }}">Last</a>
+        </li>
+        {% endif %}
+    </ul>
+</nav>
 
-          <li class="page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item" aria-current="page">
-            <a class="page-link" href="/new/?page=2">2</a>
-          </li>
-          <li class="page-item"><a class="page-link" href="/new/?page=3">3</a></li>
-          <li class="page-item">
-            <a class="page-link" href="/new/?page={servicesData.next_page_number}">Next</a>
-          </li>
-        </ul>
-      </nav>
 
 </body>
 </html>

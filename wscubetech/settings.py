@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'tinymce',
     'news_app',
     'wscubetech',
+    'contactenquiry',
 ]
 
 MIDDLEWARE = [
@@ -131,3 +132,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_DIRS = [
     BASE_DIR, "static"
 ]
+
+# Media foler sett to add 
+MEDIA_ROOT = BASE_DIR / "media"
+MEDIA_URL = "/media/"

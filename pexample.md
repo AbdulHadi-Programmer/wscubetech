@@ -58,3 +58,8 @@
   - **Total Paid Out:** 45,000 PKR
   - **Group Fund Contribution:** 15,000 PKR
   - **Amount Received by Core Member:** 55,000 PKR
+
+- **Lead (100,000 pkr project):**
+  - **Total Paid Out:** 25,000 pkr
+  - **Group Fund Contribution:** 5,000 pkr
+  - **Amount Received by Lead:** 75,000 pkr 
